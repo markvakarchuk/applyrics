@@ -6,21 +6,20 @@ import json
 from json import JSONEncoder
 import codecs
 # coding: latin-1
-# class song:
-#     def __init__(self, title, versus):
-#         self.title = title
-#         self. versus = versus
-
-#     def print(self):
-#         print(str(self.title) + "\n")
-#         print(str(self.versus) + "\n")
-
-#     def toJson(self):
-#         return json.dumps(self, default=lambda o: o.__dict__)
-
 class song:
-    title = ""
-    versus = []
+    def __init__(self, title, versus):
+        self.title = title
+        self. versus = versus
+
+    def print(self):
+        print(str(self.title) + "\n")
+        print(str(self.versus) + "\n")
+
+    def toJson(self):
+        return self.__dict__
+# class song:
+#     title = ""
+#     versus = []
 
 
 
@@ -35,7 +34,7 @@ files_in_path_noext = []
 #     files_in_path_noext.append(f)
 
 # print(files_in_path_noext)
-songs = []
+data = []
 i = 0
 s = ""
 for file in files_in_path_ext:
@@ -53,14 +52,18 @@ for file in files_in_path_ext:
                 # print(shape.text)
                 versus.append(shape.text)
     # print(versus)
-    s = song()
-    s.title = title
-    s.versus = versus
-    songs.append(s)
-    print("************************\n")
-    i+=1
+    s = song(title, versus)
+    # s.title = title
+    # s.versus = versus
+    # songs.append(s)
+    # print("************************\n")
+    # i+=1
+    # s.print
+    x = s.toJson()
+    data.append(x)
 
-print(songs)
+
+print(data)
 # for song in songs:
 #     song.print()
 
@@ -69,10 +72,10 @@ print(songs)
 # print(songs_json)
 # with open('data.txt', 'w') as outfile:
 #     outfile.write(songs_json)
-data = []
-for s in songs:
-    x = json.dumps(s.__dict__, sort_keys=True, indent=2, ensure_ascii=False)
-    data.append(x)
+# data = []
+# for s in songs:
+#     x = json.dumps(s.__dict__, sort_keys=True, indent=2, ensure_ascii=False)
+#     data.append(x)
 
-with codecs.open('data.json', 'a+', 'utf-8') as f:
+with codecs.open('data2.json', 'a+', 'utf-8') as f:
     json.dump(data, f, ensure_ascii=False )
