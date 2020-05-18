@@ -24,7 +24,7 @@ class song:
 
 
 
-directory = "Worship Songs"
+directory = "testsongs"
 files_in_path_ext = os.listdir(directory)
 files_in_path_noext = []
 
@@ -63,19 +63,7 @@ for file in files_in_path_ext:
     data.append(x)
 
 
-print(data)
-# for song in songs:
-#     song.print()
+# print(data)
 
-# songs_json = json.dumps(songs)
-
-# print(songs_json)
-# with open('data.txt', 'w') as outfile:
-#     outfile.write(songs_json)
-# data = []
-# for s in songs:
-#     x = json.dumps(s.__dict__, sort_keys=True, indent=2, ensure_ascii=False)
-#     data.append(x)
-
-with codecs.open('data2.json', 'a+', 'utf-8') as f:
+with codecs.open('data_test.json', 'a+', 'utf-8') as f:
     json.dump(data, f, ensure_ascii=False )
